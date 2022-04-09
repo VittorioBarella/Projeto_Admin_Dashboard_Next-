@@ -1,5 +1,4 @@
 import Link from 'next/link'
-
 interface MenuItemProps {
     texto: string
     icone: any
