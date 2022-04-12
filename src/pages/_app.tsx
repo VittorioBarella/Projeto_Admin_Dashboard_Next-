@@ -5,8 +5,7 @@ import { AppProvider } from './../data/context/AppContext';
 function MyApp({ Component, pageProps }) {
   <AppProvider>
     <Component {...pageProps} />
-  </AppProvider>
-
+  </AppProvider>;
 }
 
-export default MyApp
+export default MyApp;
