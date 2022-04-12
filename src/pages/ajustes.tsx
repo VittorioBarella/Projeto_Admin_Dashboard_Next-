@@ -1,10 +1,8 @@
-import Layout from '../components/template/Layout'
+import Layout from '../components/template/Layout';
 export default function Ajustes() {
   return (
-    <Layout 
-      titulo="Ajustes & Configurações" 
-      subtitulo='Personalize o sistema!'>
+    <Layout titulo='Ajustes & Configurações' subtitulo='Personalize o sistema!'>
       <h3> Conteúdo </h3>
     </Layout>
-  )
+  );
 }

@@ -505,6 +505,11 @@
   "resolved" "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.1.tgz"
   "version" "0.16.1"
 
+"@types/webrtc@^0.0.32":
+  "integrity" "sha512-+F0Ozq+ksnKtjcMHujSgb4A1Vjt0b4wvvxP3/pTnXKsIrLo34EgHh2z3qJq3ntX4dbK6ytxpY1rzO/4Z8rVrHg=="
+  "resolved" "https://registry.npmjs.org/@types/webrtc/-/webrtc-0.0.32.tgz"
+  "version" "0.0.32"
+
 "@typescript-eslint/parser@^4.20.0":
   "integrity" "sha512-UjrMsgnhQIIK82hXGaD+MCN8IfORS1CbMdu7VlZbYa8LCZtbZjJA26De4IPQB7XYZbL8gJ99KWNj0l6WD0guJg=="
   "resolved" "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-4.28.1.tgz"
