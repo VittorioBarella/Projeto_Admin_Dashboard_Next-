@@ -1,31 +1,62 @@
-import { useState } from 'react';
-import AuthInput from './../components/auth/AuthInput';
+/* eslint-disable @next/next/no-img-element */
+import { useState } from "react";
+import AuthInput from "./../components/auth/AuthInput";
+import { IconeAtencao } from "./../icons/index";
 
 export default function Autenticacao() {
-  const [modo, setModo] = useState<'login' | 'cadastro'>('login');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const [erro, setErro] = useState(null);
+  const [modo, setModo] = useState<"login" | "cadastro">("login");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
+  function exibirErro(msg, tempoEmSegundos = 5) {
+    setErro(msg);
+    setTimeout(() => setErro(null), tempoEmSegundos * 1000);
+  }
 
   function submeter() {
-    if (modo === 'login') {
-      console.log('login');
+    if (modo === "login") {
+      console.log("login");
     } else {
-      console.log('cadastrar');
+      console.log("cadastrar");
     }
   }
 
   return (
-    <div className='flex flex-col h-screen items-center justify-center'>
-      <div className='w-1/2'>
+    <div className='flex h-screen items-center justify-center'>
+      <div className='hidden md:block md:w-1/2 lg:w-2/3'>
+        <img
+          src='https://source.unsplash.com/random'
+          alt='Imagem da Tela de Autenticação'
+          className='h-screen w-full object-cover'
+        />
+      </div>
+      <div className='m-10 w-full md:w-1/2 lg:w-1/3'>
         <h1
           className={`
-                text-xl font-bold mb-5
+                text-3xl font-bold mb-5
             `}
         >
-          {modo === 'login'
-            ? 'Entre com a sua Conta'
-            : 'Cadastre-se na Plataforma'}
+          {modo === "login"
+            ? "Entre com a sua Conta"
+            : "Cadastre-se na Plataforma"}
         </h1>
+
+        {erro ? (
+          <div
+            className={`
+                flex items-center
+                bg-red-400 text-white py-3 px-5 my-2
+                border border-red-700 rounded-lg
+            `}
+          >
+            {IconeAtencao(7)}
+            <span className='ml-3'>{erro}</span>
+          </div>
+        ) : (
+          false
+        )}
+
         <AuthInput
           label='Email'
           tipo='email'
@@ -47,7 +78,7 @@ export default function Autenticacao() {
                 text-white rounded-lg px-4 py-3 mt-6
             `}
         >
-          {modo === 'login' ? 'Entrar' : 'Cadastrar'}
+          {modo === "login" ? "Entrar" : "Cadastrar"}
         </button>
 
         <hr className='my-6 border-gray-300 w-full' />
@@ -61,6 +92,33 @@ export default function Autenticacao() {
         >
           Entrar com Google
         </button>
+        {modo === "login" ? (
+          <p className='mt-8'>
+            Novo por aqui?
+            <a
+              onClick={() => setModo("cadastro")}
+              className={`
+                    text-blue-500 hover:text-blue-700 font-semibold
+                    cursor-pointer
+                `}
+            >
+              Crie uma conta gratuitamente
+            </a>
+          </p>
+        ) : (
+          <p className='mt-8'>
+            Já faz parte da nossa comunidade?
+            <a
+              onClick={() => setModo("login")}
+              className={`
+                text-blue-500 hover:text-blue-700 font-semibold
+                cursor-pointer
+            `}
+            >
+              Entre com a suas Credenciais
+            </a>
+          </p>
+        )}
       </div>
     </div>
   );
