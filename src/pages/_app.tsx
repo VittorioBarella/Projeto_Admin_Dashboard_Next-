@@ -1,11 +1,16 @@
-import 'tailwindcss/tailwind.css';
-import '../styles/globals.css';
-import { AppProvider } from './../data/context/AppContext';
+import "tailwindcss/tailwind.css";
+import { AppProvider } from "../data/context/AppContext";
+import { AuthProvider } from "../data/context/AuthContext";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  <AppProvider>
-    <Component {...pageProps} />
-  </AppProvider>;
+  return (
+    <AuthProvider>
+      <AppProvider>
+        <Component {...pageProps} />
+      </AppProvider>
+    </AuthProvider>
+  );
 }
 
 export default MyApp;
