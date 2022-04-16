@@ -101,7 +101,7 @@ export default function Autenticacao() {
               onClick={() => setModo("cadastro")}
               className={`
                     text-blue-500 hover:text-blue-700 font-semibold
-                    cursor-pointer
+                    cursor-pointer ml-3
                 `}
             >
               Crie uma conta gratuitamente
