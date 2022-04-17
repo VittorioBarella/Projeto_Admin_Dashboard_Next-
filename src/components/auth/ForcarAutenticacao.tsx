@@ -14,10 +14,10 @@ export default function ForcarAutenticacao(props) {
           <script
             dangerouslySetInnerHTML={{
               __html: `
-                                if(!document.cookie?.includes("admin-template-cod3r-auth")) {
-                                    window.location.href = "/autenticacao"
-                                }
-                            `,
+                        if(!document.cookie?.includes("admin-template-cod3r-auth")) {
+                            window.location.href = "/autenticacao"
+                        }
+                      `,
             }}
           />
         </Head>
@@ -33,7 +33,7 @@ export default function ForcarAutenticacao(props) {
                 flex justify-center items-center h-screen
             `}
       >
-        <Image src={loading} />
+        <Image src={loading} alt='loading img' />
       </div>
     );
   }

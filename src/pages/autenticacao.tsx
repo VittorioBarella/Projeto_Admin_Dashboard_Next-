@@ -5,7 +5,7 @@ import AuthInput from "./../components/auth/AuthInput";
 import { IconeAtencao } from "./../icons/index";
 
 export default function Autenticacao() {
-  const { usuario, loginGoogle } = useAuth();
+  const { cadastrar, login, loginGoogle } = useAuth();
   const [erro, setErro] = useState(null);
   const [modo, setModo] = useState<"login" | "cadastro">("login");
   const [email, setEmail] = useState("");
@@ -16,11 +16,15 @@ export default function Autenticacao() {
     setTimeout(() => setErro(null), tempoEmSegundos * 1000);
   }
 
-  function submeter() {
-    if (modo === "login") {
-      console.log("login");
-    } else {
-      console.log("cadastrar");
+  async function submeter() {
+    try {
+      if (modo === "login") {
+        await login(email, senha);
+      } else {
+        await cadastrar(email, senha);
+      }
+    } catch (e) {
+      exibirErro(e?.message ?? "Erro desconhecido");
     }
   }
 
@@ -101,7 +105,7 @@ export default function Autenticacao() {
               onClick={() => setModo("cadastro")}
               className={`
                     text-blue-500 hover:text-blue-700 font-semibold
-                    cursor-pointer ml-3
+                    cursor-pointer ml-2
                 `}
             >
               Crie uma conta gratuitamente
@@ -114,7 +118,7 @@ export default function Autenticacao() {
               onClick={() => setModo("login")}
               className={`
                 text-blue-500 hover:text-blue-700 font-semibold
-                cursor-pointer
+                cursor-pointer ml-2
             `}
             >
               Entre com a suas Credenciais
