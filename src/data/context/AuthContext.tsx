@@ -32,7 +32,6 @@ async function usuarioNormalizado(
 function gerenciarCookie(logado: boolean) {
   if (logado) {
     Cookies.set("admin-template-cod3r-auth", logado, {
-      // Passará sete dias válido
       expires: 7,
     });
   } else {
@@ -113,7 +112,6 @@ export function AuthProvider(props) {
 
   useEffect(() => {
     if (Cookies.get("admin-template-cod3r-auth")) {
-      // Chama a função de configurar a sessão
       const cancelar = firebase.auth().onIdTokenChanged(configurarSessao);
       return () => cancelar();
     } else {
