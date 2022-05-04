@@ -1,8 +1,8 @@
-interface ConteudoProps {
+interface ContentProps {
   children?: any;
 }
 
-export default function Conteudo(props: ConteudoProps) {
+export default function Content(props: ContentProps) {
   return (
     <div
       className={`

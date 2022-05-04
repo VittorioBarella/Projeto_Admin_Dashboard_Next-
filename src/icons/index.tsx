@@ -1,5 +1,5 @@
-// Para mais ícones acessar... https://heroicons.com/
-export const IconeCasa = (
+// For more icons access... https://heroicons.com/
+export const IconHouse = (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     className='h-6 w-6'
@@ -16,7 +16,7 @@ export const IconeCasa = (
   </svg>
 );
 
-export const IconeAjustes = (
+export const IconSettings = (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     className='h-6 w-6'
@@ -33,7 +33,7 @@ export const IconeAjustes = (
   </svg>
 );
 
-export const IconeSino = (
+export const IconBell = (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     className='h-6 w-6'
@@ -50,7 +50,7 @@ export const IconeSino = (
   </svg>
 );
 
-export const IconeSair = (
+export const IconExit = (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     className='h-6 w-6'
@@ -67,10 +67,10 @@ export const IconeSair = (
   </svg>
 );
 
-export const IconeSol = (tamanho = 6) => (
+export const IconSun = (size = 6) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    className={`h-${tamanho} w-${tamanho}`}
+    className={`h-${size} w-${size}`}
     fill='none'
     viewBox='0 0 24 24'
     stroke='currentColor'
@@ -83,10 +83,10 @@ export const IconeSol = (tamanho = 6) => (
     />
   </svg>
 );
-export const IconeLua = (tamanho = 6) => (
+export const IconMoon = (size = 6) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    className={`h-${tamanho} w-${tamanho}`}
+    className={`h-${size} w-${size}`}
     fill='none'
     viewBox='0 0 24 24'
     stroke='currentColor'
@@ -99,10 +99,10 @@ export const IconeLua = (tamanho = 6) => (
     />
   </svg>
 );
-export const IconeAtencao = (tamanho = 6) => (
+export const IconAttention = (size = 6) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    className={`h-${tamanho} w-${tamanho}`}
+    className={`h-${size} w-${size}`}
     fill='none'
     viewBox='0 0 24 24'
     stroke='currentColor'
