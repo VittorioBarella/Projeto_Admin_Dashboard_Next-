@@ -1,30 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
+import AuthInput from "../components/auth/AuthInput";
 import useAuth from "../data/hook/useAuth";
-import AuthInput from "./../components/auth/AuthInput";
-import { IconeAtencao } from "./../icons/index";
+import { IconAttention } from "../icons/index";
 
-export default function Autenticacao() {
-  const { cadastrar, login, loginGoogle } = useAuth();
-  const [erro, setErro] = useState(null);
-  const [modo, setModo] = useState<"login" | "cadastro">("login");
+export default function Authentication() {
+  const { register, login, loginGoogle } = useAuth();
+  const [error, setError] = useState(null);
+  const [mode, setMode] = useState<"login" | "register">("login");
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [password, setPassword] = useState("");
 
-  function exibirErro(msg, tempoEmSegundos = 5) {
-    setErro(msg);
-    setTimeout(() => setErro(null), tempoEmSegundos * 1000);
+  function displayError(msg, timeInSeconds = 5) {
+    setError(msg);
+    setTimeout(() => setError(null), timeInSeconds * 1000);
   }
 
-  async function submeter() {
+  async function submit() {
     try {
-      if (modo === "login") {
-        await login(email, senha);
+      if (mode === "login") {
+        await login(email, password);
       } else {
-        await cadastrar(email, senha);
+        await register(email, password);
       }
     } catch (e) {
-      exibirErro(e?.message ?? "Erro desconhecido");
+      displayError(e?.message ?? "Unknown error");
     }
   }
 
@@ -33,7 +33,7 @@ export default function Autenticacao() {
       <div className='hidden md:block md:w-1/2 lg:w-2/3'>
         <img
           src='https://source.unsplash.com/random'
-          alt='Imagem da Tela de Autenticação'
+          alt='Authentication Screen Image'
           className='h-screen w-full object-cover'
         />
       </div>
@@ -43,12 +43,12 @@ export default function Autenticacao() {
                 text-3xl font-bold mb-5
             `}
         >
-          {modo === "login"
-            ? "Entre com a sua Conta"
-            : "Cadastre-se na Plataforma"}
+          {mode === "login"
+            ? "Login with your Account"
+            : "Register on the Platform"}
         </h1>
 
-        {erro ? (
+        {error ? (
           <div
             className={`
                 flex items-center
@@ -56,8 +56,8 @@ export default function Autenticacao() {
                 border border-red-700 rounded-lg
             `}
           >
-            {IconeAtencao(7)}
-            <span className='ml-3'>{erro}</span>
+            {IconAttention(7)}
+            <span className='ml-3'>{error}</span>
           </div>
         ) : (
           false
@@ -65,26 +65,26 @@ export default function Autenticacao() {
 
         <AuthInput
           label='Email'
-          tipo='email'
-          valor={email}
+          type='email'
+          value={email}
           valorMudou={setEmail}
-          obrigatorio
+          required
         />
         <AuthInput
-          label='Senha'
-          tipo='password'
-          valor={senha}
-          valorMudou={setSenha}
-          obrigatorio
+          label='Password'
+          type='password'
+          value={password}
+          valorMudou={setPassword}
+          required
         />
         <button
-          onClick={submeter}
+          onClick={submit}
           className={`
                 w-full bg-indigo-500 hover:bg-indigo-400
                 text-white rounded-lg px-4 py-3 mt-6
             `}
         >
-          {modo === "login" ? "Entrar" : "Cadastrar"}
+          {mode === "login" ? "Log in" : "Register"}
         </button>
 
         <hr className='my-6 border-gray-300 w-full' />
@@ -96,32 +96,32 @@ export default function Autenticacao() {
                 text-white rounded-lg px-4 py-3
             `}
         >
-          Entrar com Google
+          Login with Google
         </button>
-        {modo === "login" ? (
+        {mode === "login" ? (
           <p className='mt-8'>
-            Novo por aqui?
+            New around here?
             <a
-              onClick={() => setModo("cadastro")}
+              onClick={() => setMode("register")}
               className={`
                     text-blue-500 hover:text-blue-700 font-semibold
                     cursor-pointer ml-2
                 `}
             >
-              Crie uma conta gratuitamente
+              Create an account for free
             </a>
           </p>
         ) : (
           <p className='mt-8'>
-            Já faz parte da nossa comunidade?
+            Already part of our community?
             <a
-              onClick={() => setModo("login")}
+              onClick={() => setMode("login")}
               className={`
                 text-blue-500 hover:text-blue-700 font-semibold
                 cursor-pointer ml-2
             `}
             >
-              Entre com a suas Credenciais
+              Login with your Credentials
             </a>
           </p>
         )}

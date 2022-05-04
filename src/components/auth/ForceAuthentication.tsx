@@ -4,18 +4,18 @@ import router from "next/router";
 import loading from "../../../public/images/loading.gif";
 import useAuth from "../../data/hook/useAuth";
 
-export default function ForcarAutenticacao(props) {
-  const { usuario, carregando } = useAuth();
+export default function ForceAuthentication(props) {
+  const { user, charging } = useAuth();
 
-  function renderizarConteudo() {
+  function contentRender() {
     return (
       <>
         <Head>
           <script
             dangerouslySetInnerHTML={{
               __html: `
-                                if(!document.cookie?.includes("admin-template-cod3r-auth")) {
-                                    window.location.href = "/autenticacao"
+                                if(!document.cookie?.includes("admin-template-auth")) {
+                                    window.location.href = "/authentication"
                                 }
                             `,
             }}
@@ -26,7 +26,7 @@ export default function ForcarAutenticacao(props) {
     );
   }
 
-  function renderizarCarregando() {
+  function renderCharging() {
     return (
       <div
         className={`
@@ -38,12 +38,12 @@ export default function ForcarAutenticacao(props) {
     );
   }
 
-  if (!carregando && usuario?.email) {
-    return renderizarConteudo();
-  } else if (carregando) {
-    return renderizarCarregando();
+  if (!charging && user?.email) {
+    return contentRender();
+  } else if (charging) {
+    return renderCharging();
   } else {
-    router.push("/autenticacao");
+    router.push("/authentication");
     return null;
   }
 }

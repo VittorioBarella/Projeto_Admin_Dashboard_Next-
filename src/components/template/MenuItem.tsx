@@ -1,15 +1,15 @@
 import Link from "next/link";
 
 interface MenuItemProps {
-  texto: string;
-  icone: any;
+  text: string;
+  icon: any;
   url?: string;
   className?: string;
   onClick?: (evento: any) => void;
 }
 
 export default function MenuItem(props: MenuItemProps) {
-  function renderizarLink() {
+  function renderLink() {
     return (
       <a
         className={`
@@ -19,8 +19,8 @@ export default function MenuItem(props: MenuItemProps) {
                     ${props.className}
                 `}
       >
-        {props.icone}
-        <span className={`text-xs font-light`}>{props.texto}</span>
+        {props.icon}
+        <span className={`text-xs font-light`}>{props.text}</span>
       </a>
     );
   }
@@ -32,11 +32,7 @@ export default function MenuItem(props: MenuItemProps) {
             cursor-pointer
         `}
     >
-      {props.url ? (
-        <Link href={props.url}>{renderizarLink()}</Link>
-      ) : (
-        renderizarLink()
-      )}
+      {props.url ? <Link href={props.url}>{renderLink()}</Link> : renderLink()}
     </li>
   );
 }
