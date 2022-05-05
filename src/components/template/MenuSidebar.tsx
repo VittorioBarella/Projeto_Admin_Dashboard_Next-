@@ -1,11 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import useAuth from "../../data/hook/useAuth";
 import { IconBell, IconExit, IconHouse, IconSettings } from "../../icons";
-import Logo from "./Logo";
 import MenuItem from "./MenuItem";
 
 export default function MenuSidebar() {
   const { logout } = useAuth();
-
   return (
     <aside
       className={`
@@ -14,15 +14,15 @@ export default function MenuSidebar() {
             dark:bg-gray-900
         `}
     >
-      <div
-        className={`
-                flex flex-col items-center justify-center
-                bg-gradient-to-r from-indigo-500 to-purple-800
-                h-20 w-20
-            `}
-      >
-        <Logo />
-      </div>
+      <Link href='/'>
+        <img
+          className=' flex flex-col justify-center logo'
+          src='/images/logo.png'
+          alt='Brand logo'
+          width={100}
+          height={60}
+        />
+      </Link>
       <ul className='flex-grow'>
         <MenuItem url='/' text='Home Page' icon={IconHouse} />
         <MenuItem url='/settings' text='Settings' icon={IconSettings} />

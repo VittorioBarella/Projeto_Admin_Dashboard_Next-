@@ -15,3 +15,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.logo{
+  margin-left: -6px;
+}
