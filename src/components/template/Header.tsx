@@ -53,7 +53,7 @@ export function HeaderStats() {
                   statPercentColor='text-red-500'
                   statDescripiron='Since last week'
                   statIconName='fas fa-chart-pie'
-                  statIconColor='bg-orange-500'
+                  statIconColor='bg-blue-500'
                 />
               </div>
               <div className='w-full lg:w-6/12 xl:w-3/12 px-4'>
@@ -77,7 +77,7 @@ export function HeaderStats() {
                   statPercentColor='text-emerald-500'
                   statDescripiron='Since last month'
                   statIconName='fas fa-percent'
-                  statIconColor='bg-lightBlue-500'
+                  statIconColor='bg-green-500'
                 />
               </div>
             </div>
