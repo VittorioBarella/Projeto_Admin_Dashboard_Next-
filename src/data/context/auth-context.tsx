@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import route from "next/router";
 import { createContext, useEffect, useState } from "react";
 import firebase from "../../firebase/config";
-import User from "../../model/User";
+import User from "../../model/user";
 
 interface AuthContextProps {
   user?: User;

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
-import AuthInput from "../components/auth/AuthInput";
-import useAuth from "../data/hook/useAuth";
+import AuthInput from "../components/auth/auth-input";
+import useAuth from "../data/hook/use-auth";
 import { IconAttention } from "../icons/index";
 
 export default function Authentication() {
@@ -29,15 +29,15 @@ export default function Authentication() {
   }
 
   return (
-    <div className='flex h-screen items-center justify-center'>
-      <div className='hidden md:block md:w-1/2 lg:w-2/3'>
+    <div className="flex h-screen items-center justify-center">
+      <div className="hidden md:block md:w-1/2 lg:w-2/3">
         <img
-          src='https://source.unsplash.com/random'
-          alt='Authentication Screen Image'
-          className='h-screen w-full object-cover'
+          src="https://source.unsplash.com/random"
+          alt="Authentication Screen Image"
+          className="h-screen w-full object-cover"
         />
       </div>
-      <div className='m-10 w-full md:w-1/2 lg:w-1/3'>
+      <div className="m-10 w-full md:w-1/2 lg:w-1/3">
         <h1
           className={`
                 text-3xl font-bold mb-5
@@ -57,22 +57,22 @@ export default function Authentication() {
             `}
           >
             {IconAttention(7)}
-            <span className='ml-3'>{error}</span>
+            <span className="ml-3">{error}</span>
           </div>
         ) : (
           false
         )}
 
         <AuthInput
-          label='Email'
-          type='email'
+          label="Email"
+          type="email"
           value={email}
           valorMudou={setEmail}
           required
         />
         <AuthInput
-          label='Password'
-          type='password'
+          label="Password"
+          type="password"
           value={password}
           valorMudou={setPassword}
           required
@@ -87,7 +87,7 @@ export default function Authentication() {
           {mode === "login" ? "Log in" : "Register"}
         </button>
 
-        <hr className='my-6 border-gray-300 w-full' />
+        <hr className="my-6 border-gray-300 w-full" />
 
         <button
           onClick={loginGoogle}
@@ -99,7 +99,7 @@ export default function Authentication() {
           Login with Google
         </button>
         {mode === "login" ? (
-          <p className='mt-8'>
+          <p className="mt-8">
             New around here?
             <a
               onClick={() => setMode("register")}
@@ -112,7 +112,7 @@ export default function Authentication() {
             </a>
           </p>
         ) : (
-          <p className='mt-8'>
+          <p className="mt-8">
             Already part of our community?
             <a
               onClick={() => setMode("login")}
