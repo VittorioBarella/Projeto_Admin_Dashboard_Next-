@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import router from "next/router";
 import loading from "../../../public/images/loading.gif";
-import useAuth from "../../data/hook/useAuth";
+import useAuth from "../../data/hook/use-auth";
 
 export default function ForceAuthentication(props) {
   const { user, charging } = useAuth();

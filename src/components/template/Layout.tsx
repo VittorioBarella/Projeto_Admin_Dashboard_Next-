@@ -1,9 +1,8 @@
-import useAppData from "../../data/hook/useAppData";
-import ForceAuthentication from "../auth/ForceAuthentication";
-import Content from "./Content";
-import Header from "./Header";
-import MenuSidebar from "./MenuSidebar";
-
+import useAppData from "../../data/hook/use-app-data";
+import ForceAuthentication from "../auth/force-authentication";
+import Content from "./content";
+import Header from "./header";
+import MenuSidebar from "./menu-sidebar";
 interface LayoutProps {
   title: string;
   subTitle: string;
