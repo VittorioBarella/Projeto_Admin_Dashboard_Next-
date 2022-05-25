@@ -13,12 +13,15 @@ export default function Layout(props: LayoutProps) {
   const { theme } = useAppData();
   return (
     <ForceAuthentication>
-      <div className={`${theme} flex h-screen w-screen`}>
+      <div
+        className={`${theme} flex h-screen w-screen overflow-x-hidden overflow-y-scroll `}
+      >
         <MenuSidebar />
         <div
           className={`
-                flex flex-col w-full p-7 
-                bg-gray-300 dark:bg-gray-800
+                container mx-auto my-auto
+                flex flex-col w-full p-7 relative
+                bg-gray-300 dark:bg-gray-800 
             `}
         >
           <Header title={props.title} subTitle={props.subTitle} />
