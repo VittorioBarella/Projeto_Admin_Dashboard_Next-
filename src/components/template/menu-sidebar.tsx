@@ -9,7 +9,7 @@ export default function MenuSidebar() {
   return (
     <aside
       className={`
-            flex flex-col
+            flex flex-col absolute min-h-full z-10
             bg-gray-200 text-gray-700
             dark:bg-gray-900
         `}
