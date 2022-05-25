@@ -19,7 +19,7 @@ export default function Layout(props: LayoutProps) {
         <MenuSidebar />
         <div
           className={`
-                container mx-auto my-auto
+                ml-24 mx-auto my-auto
                 flex flex-col w-full p-7 relative
                 bg-gray-300 dark:bg-gray-800 
             `}
