@@ -11,7 +11,7 @@ export default function MenuSidebar() {
       className={`
             flex flex-col absolute min-h-full z-10
             bg-gray-200 text-gray-700
-            dark:bg-gray-900
+            dark:bg-gray-900 p-0.5
         `}
     >
       <Link href="/">

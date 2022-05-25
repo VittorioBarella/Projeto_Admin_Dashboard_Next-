@@ -6,7 +6,7 @@ import Layout from "../components/template/layout";
 import Calendar from "./../components/calendar/calendar";
 export default function Home() {
   return (
-    <Layout title="Home Page" subTitle="We are building an Admin template!">
+    <Layout title="Home Page" subTitle="We are building an Day to Day App">
       <HeaderStats />
       <div className="flex flex-wrap">
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
