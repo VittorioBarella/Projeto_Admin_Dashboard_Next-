@@ -1,7 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import useAuth from "../../data/hook/use-auth";
-import { IconExit, IconHouse } from "../../icons";
+import {
+  IconBell,
+  IconExit,
+  IconHealth,
+  IconHouse,
+  IconSettings,
+} from "../../icons";
 import MenuItem from "./menu-Item";
 
 export default function MenuSidebar() {
@@ -25,6 +31,9 @@ export default function MenuSidebar() {
       </Link>
       <ul className="flex-grow">
         <MenuItem url="/" text="Home Page" icon={IconHouse} />
+        <MenuItem url="/health" text="Health" icon={IconHealth} />
+        <MenuItem url="/settings" text="Settings" icon={IconSettings} />
+        <MenuItem url="/notifications" text="Notifications" icon={IconBell} />
       </ul>
       <ul>
         <MenuItem
