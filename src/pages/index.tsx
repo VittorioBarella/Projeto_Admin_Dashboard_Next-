@@ -9,10 +9,10 @@ export default function Home() {
     <Layout title="Home Page" subTitle="We are building an Day to Day App">
       <HeaderStats />
       <div className="flex flex-wrap">
-        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+        <div className="w-full xl:w-3/5 mb-12 xl:mb-0 px-4">
           <Calendar />
         </div>
-        <div className="w-full xl:w-4/12 px-4">
+        <div className="w-full xl:w-2/5 px-4">
           <LatestAppointments />
         </div>
       </div>
