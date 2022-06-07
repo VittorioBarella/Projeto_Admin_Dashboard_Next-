@@ -69,7 +69,10 @@ export default function MedicationTable(props) {
   function renderData() {
     return props.remedys?.map((remedy, i) => {
       return (
-        <tr className="border-b" key={`remedy.id`}>
+        <tr
+          className={`${i % 2 === 0 ? "bg-blue-200" : "bg-blue-100"}`}
+          key={`remedy.id`}
+        >
           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r">
             {remedy.id}
           </td>

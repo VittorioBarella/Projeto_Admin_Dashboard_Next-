@@ -4,8 +4,8 @@ import AddMedicine from "../core/add-medicine";
 
 export default function Health() {
   const remedys = [
-    new AddMedicine("1",150,"Euthyrox","Need"),
-    new AddMedicine("2", 175,"Euthyrox", "Need"),
+    new AddMedicine("1", "Euthyrox", 150, "Need"),
+    new AddMedicine("2", "Euthyrox", 175, "Need"),
   ];
 
   return (
