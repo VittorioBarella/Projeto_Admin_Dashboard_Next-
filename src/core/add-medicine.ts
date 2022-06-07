@@ -4,7 +4,7 @@ export default class AddMedicine {
      #dosage: number
      #dayToTake: string
     
-    constructor(name: string, dosage: number, dayToTake: string = '', id: string = null){
+    constructor(id: string = null, name: string, dosage: number, dayToTake: string = '' ){
         this.#name = name
         this.#dosage = dosage
         this.#dayToTake = dayToTake
@@ -12,7 +12,7 @@ export default class AddMedicine {
     }
 
     static empty(){
-        return new AddMedicine('', 0)
+        return new AddMedicine('','', 0)
     }
 
     get id(){
