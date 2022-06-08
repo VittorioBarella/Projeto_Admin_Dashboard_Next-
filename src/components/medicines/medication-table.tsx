@@ -1,4 +1,5 @@
 import AddMedicine from "./../../core/add-medicine";
+import { IconEdit, IconTrash } from "./../../icons/index";
 
 interface MedicationTableProps {
   medicines: AddMedicine[];
@@ -62,6 +63,12 @@ export default function MedicationTable(props) {
         >
           Sunday
         </th>
+        <th
+          scope="col"
+          className=" font-medium text-gray-900 px-6 py-4 border-r"
+        >
+          Actions
+        </th>
       </tr>
     );
   }
@@ -71,7 +78,7 @@ export default function MedicationTable(props) {
       return (
         <tr
           className={`${i % 2 === 0 ? "bg-blue-200" : "bg-blue-100"}`}
-          key={`remedy.id`}
+          key={`$(remedy.id)`}
         >
           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r">
             {remedy.id}
@@ -85,9 +92,37 @@ export default function MedicationTable(props) {
           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
             {remedy.dayToTake}
           </td>
+          {renderActions(remedy)}
         </tr>
       );
     });
+  }
+
+  function renderActions(remedy: AddMedicine) {
+    return (
+      <>
+        <td className="flex">
+          <button
+            className={`
+          flex justify-center items-center
+          text-green-600 rounded-full p-2 m-1
+          hover:bg-blue-50
+        `}
+          >
+            {IconEdit}
+          </button>
+          <button
+            className={`
+          flex justify-center items-center
+          text-red-500 rounded-full p-2 m-1
+          hover:bg-blue-50
+        `}
+          >
+            {IconTrash}
+          </button>
+        </td>
+      </>
+    );
   }
 
   return (
