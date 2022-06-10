@@ -3,9 +3,14 @@ import Layout from "../components/template/layout";
 import AddMedicine from "../core/add-medicine";
 
 export default function Health() {
-  const remedys = [
-    new AddMedicine("1", "Euthyrox", 150, "Need"),
-    new AddMedicine("2", "Euthyrox", 175, "Need"),
+  const addMedicines = [
+    new AddMedicine("1", "Euthyrox", 150, "Monday"),
+    new AddMedicine("2", "Euthyrox", 175, "Tuesday"),
+    new AddMedicine("3", "Euthyrox", 150, "Wednesday"),
+    new AddMedicine("4", "Euthyrox", 175, "Thursday"),
+    new AddMedicine("5", "Euthyrox", 150, "Friday"),
+    new AddMedicine("6", "Euthyrox", 175, "Saturday"),
+    new AddMedicine("7", "Euthyrox", 175, "Sunday"),
   ];
 
   return (
@@ -17,7 +22,7 @@ export default function Health() {
         `}
       >
         <div className="p-6">
-          <MedicationTable remedys={remedys} />
+          <MedicationTable addMedicines={addMedicines}></MedicationTable>
         </div>
       </div>
     </Layout>

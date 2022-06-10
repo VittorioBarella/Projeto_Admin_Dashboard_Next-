@@ -1,11 +1,8 @@
 import AddMedicine from "./../../core/add-medicine";
-import { IconEdit, IconTrash } from "./../../icons/index";
-
-interface MedicationTableProps {
-  medicines: AddMedicine[];
+interface TableProps {
+  addMedicines: AddMedicine[];
 }
-
-export default function MedicationTable(props) {
+export default function MedicationTable(props: TableProps) {
   function renderHeader() {
     return (
       <tr>
@@ -74,68 +71,22 @@ export default function MedicationTable(props) {
   }
 
   function renderData() {
-    return props.remedys?.map((remedy, i) => {
+    return props.addMedicines?.map((AddMedicine, i) => {
       return (
-        <tr
-          className={`${i % 2 === 0 ? "bg-blue-200" : "bg-blue-100"}`}
-          key={`$(remedy.id)`}
-        >
-          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r">
-            {remedy.id}
-          </td>
-          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
-            {remedy.name}
-          </td>
-          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
-            {remedy.dosage}
-          </td>
-          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
-            {remedy.dayToTake}
-          </td>
-          {renderActions(remedy)}
+        <tr key={AddMedicine.id}>
+          <td>{AddMedicine.id}</td>
+          <td>{AddMedicine.name}</td>
+          <td>{AddMedicine.dosage}</td>
+          <td>{AddMedicine.dayToTake}</td>
         </tr>
       );
     });
   }
 
-  function renderActions(remedy: AddMedicine) {
-    return (
-      <>
-        <td className="flex">
-          <button
-            className={`
-          flex justify-center items-center
-          text-green-600 rounded-full p-2 m-1
-          hover:bg-blue-50
-        `}
-          >
-            {IconEdit}
-          </button>
-          <button
-            className={`
-          flex justify-center items-center
-          text-red-500 rounded-full p-2 m-1
-          hover:bg-blue-50
-        `}
-          >
-            {IconTrash}
-          </button>
-        </td>
-      </>
-    );
-  }
-
   return (
-    <div className="flex flex-col">
-      <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-          <div className="overflow-hidden"></div>
-          <table className="min-w-full border text-center">
-            <thead className="border-b">{renderHeader()}</thead>
-            <tbody>{renderData()}</tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+    <table>
+      <thead>{renderHeader()}</thead>
+      <tbody>{renderData()}</tbody>
+    </table>
   );
 }
