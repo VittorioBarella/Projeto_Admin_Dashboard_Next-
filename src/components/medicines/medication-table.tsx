@@ -85,6 +85,12 @@ export default function MedicationTable(props: TableProps) {
           <td>{AddMedicine.name}</td>
           <td>{AddMedicine.dosage}</td>
           <td>{AddMedicine.dayToTake}</td>
+          <td>{AddMedicine.id}</td>
+          <td>{AddMedicine.name}</td>
+          <td>{AddMedicine.dosage}</td>
+          <td>{AddMedicine.dayToTake}</td>
+          <td>{AddMedicine.dosage}</td>
+          <td>{AddMedicine.dayToTake}</td>
           {renderActions(AddMedicine)}
         </tr>
       );
@@ -109,7 +115,7 @@ export default function MedicationTable(props: TableProps) {
   }
 
   return (
-    <table>
+    <table className="w-full">
       <thead>{renderHeader()}</thead>
       <tbody>{renderData()}</tbody>
     </table>
