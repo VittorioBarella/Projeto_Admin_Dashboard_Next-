@@ -132,7 +132,7 @@ export const IconAttention = (size = 6) => (
     />
   </svg>
 );
-export const IconEdit = (size = 6) => (
+export const IconEdit = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-6 w-6"
@@ -148,7 +148,7 @@ export const IconEdit = (size = 6) => (
     />
   </svg>
 );
-export const IconTrash = (size = 6) => (
+export const IconTrash = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-6 w-6"

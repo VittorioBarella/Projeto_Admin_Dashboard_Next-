@@ -22,7 +22,7 @@ export default function Health() {
         `}
       >
         <div className="p-6">
-          <MedicationTable addMedicines={addMedicines}></MedicationTable>
+          <MedicationTable addMedicines={addMedicines} />
         </div>
       </div>
     </Layout>
