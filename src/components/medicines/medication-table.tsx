@@ -25,47 +25,17 @@ export default function MedicationTable(props: TableProps) {
             scope="col"
             className="text-sm font-medium text-gray-900 px-6 py-4 border-r"
           >
-            Monday
+            Dosage
           </th>
           <th
             scope="col"
             className="text-sm font-medium text-gray-900 px-6 py-4 border-r"
           >
-            Tuesday
+            Days To Take
           </th>
           <th
             scope="col"
             className="text-sm font-medium text-gray-900 px-6 py-4 border-r"
-          >
-            Wednesday
-          </th>
-          <th
-            scope="col"
-            className="text-sm font-medium text-gray-900 px-6 py-4 border-r"
-          >
-            Thursday
-          </th>
-          <th
-            scope="col"
-            className="text-sm font-medium text-gray-900 px-6 py-4 border-r"
-          >
-            Friday
-          </th>
-          <th
-            scope="col"
-            className="text-sm font-medium text-gray-900 px-6 py-4 border-r"
-          >
-            Saturday
-          </th>
-          <th
-            scope="col"
-            className="text-sm font-medium text-gray-900 px-6 py-4 border-r"
-          >
-            Sunday
-          </th>
-          <th
-            scope="col"
-            className=" font-medium text-gray-900 px-6 py-4 border-r"
           >
             Actions
           </th>
@@ -81,16 +51,18 @@ export default function MedicationTable(props: TableProps) {
           key={AddMedicine.id}
           className={`${i % 2 === 0 ? "bg-blue-200" : "bg-blue-100"}`}
         >
-          <td>{AddMedicine.id}</td>
-          <td>{AddMedicine.name}</td>
-          <td>{AddMedicine.dosage}</td>
-          <td>{AddMedicine.dayToTake}</td>
-          <td>{AddMedicine.id}</td>
-          <td>{AddMedicine.name}</td>
-          <td>{AddMedicine.dosage}</td>
-          <td>{AddMedicine.dayToTake}</td>
-          <td>{AddMedicine.dosage}</td>
-          <td>{AddMedicine.dayToTake}</td>
+          <td scope="row" className="text-center">
+            {AddMedicine.id}
+          </td>
+          <td scope="row" className="text-center">
+            {AddMedicine.name}
+          </td>
+          <td scope="row" className="text-center">
+            {AddMedicine.dosage}
+          </td>
+          <td scope="row" className="text-center">
+            {AddMedicine.dayToTake}
+          </td>
           {renderActions(AddMedicine)}
         </tr>
       );
@@ -99,17 +71,25 @@ export default function MedicationTable(props: TableProps) {
 
   function renderActions(addMedicines: AddMedicine) {
     return (
-      <td>
+      <td className="flex justify-center">
         <button
           className={` 
-          flex justify-center items-center
-          text-green-600 rounded-full
+          flex justify-center 
+          text-green-600  rounded-full p-2 m-1
           hover:bg-blue-50
         `}
         >
           {IconEdit}
         </button>
-        <button>{IconTrash}</button>
+        <button
+          className={` 
+          flex justify-center
+          text-red-500  rounded-full p-2 m-1
+          hover:bg-blue-50
+        `}
+        >
+          {IconTrash}
+        </button>
       </td>
     );
   }
