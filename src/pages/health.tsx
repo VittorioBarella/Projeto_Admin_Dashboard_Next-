@@ -1,3 +1,4 @@
+import Button from "../components/button/button";
 import MedicationTable from "../components/medicines/medication-table";
 import Layout from "../components/template/Layout";
 import AddMedicine from "../core/add-medicine";
@@ -29,6 +30,11 @@ export default function Health() {
         `}
       >
         <div className="p-6">
+          <div className="flex justify-end">
+            <Button color="blue" className="mb-4">
+              New Medicine
+            </Button>
+          </div>
           <MedicationTable
             addMedicines={addMedicines}
             selectedMedicine={selectedMedicine}
