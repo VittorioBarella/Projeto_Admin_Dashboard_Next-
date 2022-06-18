@@ -3,8 +3,12 @@ import AddMedicine from "./../../core/add-medicine";
 
 interface TableProps {
   addMedicines: AddMedicine[];
+  selectedMedicine?: (addMedicines: AddMedicine) => void;
+  medicineExcluded?: (addMedicines: AddMedicine) => void;
 }
 export default function MedicationTable(props: TableProps) {
+  const showActions = props.medicineExcluded || props.selectedMedicine;
+
   function renderHeader() {
     return (
       <>
@@ -19,7 +23,7 @@ export default function MedicationTable(props: TableProps) {
             scope="col"
             className="text-sm font-medium text-gray-900 px-6 py-4 border-r"
           >
-            Euthyrox
+            Medicine
           </th>
           <th
             scope="col"
@@ -33,12 +37,16 @@ export default function MedicationTable(props: TableProps) {
           >
             Days To Take
           </th>
-          <th
-            scope="col"
-            className="text-sm font-medium text-gray-900 px-6 py-4 border-r"
-          >
-            Actions
-          </th>
+          {showActions ? (
+            <th
+              scope="col"
+              className="text-sm font-medium text-gray-900 px-6 py-4 border-r"
+            >
+              Actions
+            </th>
+          ) : (
+            false
+          )}
         </tr>
       </>
     );
@@ -63,7 +71,7 @@ export default function MedicationTable(props: TableProps) {
           <td scope="row" className="text-center">
             {AddMedicine.dayToTake}
           </td>
-          {renderActions(AddMedicine)}
+          {showActions ? renderActions(AddMedicine) : false}
         </tr>
       );
     });
@@ -72,24 +80,34 @@ export default function MedicationTable(props: TableProps) {
   function renderActions(addMedicines: AddMedicine) {
     return (
       <td className="flex justify-center">
-        <button
-          className={` 
-          flex justify-center 
-          text-green-600  rounded-full p-2 m-1
-          hover:bg-blue-50
-        `}
-        >
-          {IconEdit}
-        </button>
-        <button
-          className={` 
+        {props.selectedMedicine ? (
+          <button
+            onClick={() => props.selectedMedicine?.(addMedicines)}
+            className={` 
+              flex justify-center 
+              text-green-600  rounded-full p-2 m-1
+              hover:bg-blue-50
+          `}
+          >
+            {IconEdit}
+          </button>
+        ) : (
+          false
+        )}
+        {props.medicineExcluded ? (
+          <button
+            onClick={() => props.medicineExcluded?.(addMedicines)}
+            className={` 
           flex justify-center
           text-red-500  rounded-full p-2 m-1
           hover:bg-blue-50
         `}
-        >
-          {IconTrash}
-        </button>
+          >
+            {IconTrash}
+          </button>
+        ) : (
+          false
+        )}
       </td>
     );
   }
