@@ -1,5 +1,5 @@
 import MedicationTable from "../components/medicines/medication-table";
-import Layout from "../components/template/layout";
+import Layout from "../components/template/Layout";
 import AddMedicine from "../core/add-medicine";
 
 export default function Health() {
@@ -13,6 +13,13 @@ export default function Health() {
     new AddMedicine("7", "Euthyrox", 175, "Sunday"),
   ];
 
+  function selectedMedicine(AddMedicines: AddMedicine) {
+    console.log(AddMedicines.name);
+  }
+  function medicineExcluded(AddMedicines: AddMedicine) {
+    console.log(`Deleted... ${AddMedicines.name}`);
+  }
+
   return (
     <Layout title="Health" subTitle="Manage your Health information!">
       <div
@@ -22,7 +29,11 @@ export default function Health() {
         `}
       >
         <div className="p-6">
-          <MedicationTable addMedicines={addMedicines} />
+          <MedicationTable
+            addMedicines={addMedicines}
+            selectedMedicine={selectedMedicine}
+            medicineExcluded={medicineExcluded}
+          />
         </div>
       </div>
     </Layout>
