@@ -6,6 +6,11 @@ import Layout from "../components/template/Layout";
 import AddMedicine from "../core/add-medicine";
 
 export default function Health() {
+  const [addMedicine, setAddMedicine] = useState<AddMedicine>(
+    AddMedicine.empty()
+  );
+  const [visible, setVisible] = useState<"table" | "form">("table");
+
   const addMedicines = [
     new AddMedicine("1", "Euthyrox", 150, "Monday"),
     new AddMedicine("2", "Euthyrox", 175, "Tuesday"),
@@ -17,17 +22,21 @@ export default function Health() {
   ];
 
   function selectedMedicine(AddMedicines: AddMedicine) {
-    console.log(AddMedicines.name);
+    setAddMedicine(AddMedicines);
+    setVisible("form");
   }
   function medicineExcluded(AddMedicines: AddMedicine) {
     console.log(`Deleted... ${AddMedicines.name}`);
   }
 
+  function newMedicine() {
+    setAddMedicine(AddMedicine.empty());
+    setVisible("form");
+  }
   function saveMedicine(AddMedicine: AddMedicine) {
     console.log(AddMedicine);
+    setVisible("table");
   }
-
-  const [visible, setVisible] = useState<"table" | "form">("table");
 
   return (
     <Layout title="Health" subTitle="Manage your Health information!">
@@ -41,11 +50,7 @@ export default function Health() {
           {visible === "table" ? (
             <>
               <div className="flex justify-end">
-                <Button
-                  color="blue"
-                  className="mb-4"
-                  onClick={() => setVisible("form")}
-                >
+                <Button color="blue" className="mb-4" onClick={newMedicine}>
                   New Medicine
                 </Button>
               </div>
@@ -57,7 +62,7 @@ export default function Health() {
             </>
           ) : (
             <MedicationForm
-              addMecines={addMedicines[0]}
+              addMecines={addMedicine}
               medicineChanged={saveMedicine}
               canceled={() => setVisible("table")}
             />
