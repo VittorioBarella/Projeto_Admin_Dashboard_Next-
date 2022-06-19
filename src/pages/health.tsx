@@ -23,6 +23,10 @@ export default function Health() {
     console.log(`Deleted... ${AddMedicines.name}`);
   }
 
+  function saveMedicine(AddMedicine: AddMedicine) {
+    console.log(AddMedicine);
+  }
+
   const [visible, setVisible] = useState<"table" | "form">("table");
 
   return (
@@ -54,6 +58,7 @@ export default function Health() {
           ) : (
             <MedicationForm
               addMecines={addMedicines[0]}
+              medicineChanged={saveMedicine}
               canceled={() => setVisible("table")}
             />
           )}
