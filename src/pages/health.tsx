@@ -1,4 +1,6 @@
+import { useState } from "react";
 import Button from "../components/button/button";
+import MedicationForm from "../components/forms/medication-form";
 import MedicationTable from "../components/medicines/medication-table";
 import Layout from "../components/template/Layout";
 import AddMedicine from "../core/add-medicine";
@@ -21,6 +23,8 @@ export default function Health() {
     console.log(`Deleted... ${AddMedicines.name}`);
   }
 
+  const [visible, setVisible] = useState<"table" | "form">("table");
+
   return (
     <Layout title="Health" subTitle="Manage your Health information!">
       <div
@@ -30,16 +34,29 @@ export default function Health() {
         `}
       >
         <div className="p-6">
-          <div className="flex justify-end">
-            <Button color="blue" className="mb-4">
-              New Medicine
-            </Button>
-          </div>
-          <MedicationTable
-            addMedicines={addMedicines}
-            selectedMedicine={selectedMedicine}
-            medicineExcluded={medicineExcluded}
-          />
+          {visible === "table" ? (
+            <>
+              <div className="flex justify-end">
+                <Button
+                  color="blue"
+                  className="mb-4"
+                  onClick={() => setVisible("form")}
+                >
+                  New Medicine
+                </Button>
+              </div>
+              <MedicationTable
+                addMedicines={addMedicines}
+                selectedMedicine={selectedMedicine}
+                medicineExcluded={medicineExcluded}
+              />
+            </>
+          ) : (
+            <MedicationForm
+              addMecines={addMedicines[0]}
+              canceled={() => setVisible("table")}
+            />
+          )}
         </div>
       </div>
     </Layout>

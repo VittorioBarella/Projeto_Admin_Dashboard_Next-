@@ -2,13 +2,13 @@ export default class AddMedicine {
      #id:string
      #name: string
      #dosage: number
-     #dayToTake: string
+     #daysToTake: string
     
-    constructor(id: string = null, name: string, dosage: number, dayToTake: string){
+    constructor(id: string = null, name: string, dosage: number, daysToTake: string){
         this.#id = id
         this.#name = name
         this.#dosage = dosage
-        this.#dayToTake = dayToTake 
+        this.#daysToTake = daysToTake 
     }
 
     static empty(){
@@ -24,8 +24,8 @@ export default class AddMedicine {
     get dosage(){
         return this.#dosage
     }
-    get dayToTake(){
-        return this.#dayToTake
+    get daysToTake(){
+        return this.#daysToTake
     }
 
 }
