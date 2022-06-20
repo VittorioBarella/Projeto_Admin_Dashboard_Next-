@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@firebase/firestore": "^3.4.10",
     "@fortawesome/fontawesome-free": "^5.8.0",
     "@headlessui/react": "^1.6.2",
     "@heroicons/react": "^1.0.6",
