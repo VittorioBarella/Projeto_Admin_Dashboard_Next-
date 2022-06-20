@@ -1,7 +1,7 @@
 import Button from "../components/button/button";
 import MedicineForm from "../components/forms/medicine-form";
 import MedicinesTable from "../components/medicines/medicines-table";
-import Layout from "../components/template/Layout";
+import Layout from "../components/template/layout";
 import useMedicines from "./../data/hook/use-medicines";
 
 export default function Health() {
