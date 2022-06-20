@@ -1,49 +1,20 @@
-import { useEffect, useState } from "react";
 import Button from "../components/button/button";
 import MedicineForm from "../components/forms/medicine-form";
 import MedicinesTable from "../components/medicines/medicines-table";
 import Layout from "../components/template/Layout";
-import AddMedicine from "../core/add-medicine";
-import MedicineRepository from "./../core/medicine-repository";
-import MedicineCollection from "./../firebase/db/medicine-collection";
+import useMedicines from "./../data/hook/use-medicines";
 
 export default function Health() {
-  const repo: MedicineRepository = new MedicineCollection();
-
-  const [addMedicine, setAddMedicine] = useState<AddMedicine>(
-    AddMedicine.empty()
-  );
-  const [addMedicines, setAddMedicines] = useState<AddMedicine[]>([]);
-  const [visible, setVisible] = useState<"table" | "form">("table");
-
-  useEffect(getAll, []);
-
-  function getAll() {
-    repo.getAll().then((addMedicines) => {
-      setAddMedicines(addMedicines);
-      setVisible("table");
-    });
-  }
-
-  function selectedMedicine(addMedicines: AddMedicine) {
-    setAddMedicine(addMedicines);
-    setVisible("form");
-  }
-
-  async function medicineExcluded(addMedicines: AddMedicine) {
-    await repo.delete(addMedicines);
-    getAll();
-  }
-
-  function newMedicine() {
-    setAddMedicine(AddMedicine.empty());
-    setVisible("form");
-  }
-
-  async function saveMedicine(addMedicine: AddMedicine) {
-    await repo.save(addMedicine);
-    getAll();
-  }
+  const {
+    newMedicine,
+    saveMedicine,
+    medicineExcluded,
+    selectedMedicine,
+    addMedicine,
+    addMedicines,
+    tableVisible,
+    showTable,
+  } = useMedicines();
 
   return (
     <Layout title="Health" subTitle="Manage your Health information!">
@@ -54,7 +25,7 @@ export default function Health() {
         `}
       >
         <div className="p-6">
-          {visible === "table" ? (
+          {tableVisible ? (
             <>
               <div className="flex justify-end">
                 <Button color="blue" className="mb-4" onClick={newMedicine}>
@@ -71,7 +42,7 @@ export default function Health() {
             <MedicineForm
               addMecines={addMedicine}
               medicineChanged={saveMedicine}
-              canceled={() => setVisible("table")}
+              canceled={showTable}
             />
           )}
         </div>
