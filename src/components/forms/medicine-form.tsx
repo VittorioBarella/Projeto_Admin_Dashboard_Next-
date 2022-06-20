@@ -1,14 +1,14 @@
 import { useState } from "react";
+import AddMedicine from "../../core/add-medicine";
 import Button from "../button/button";
-import AddMedicine from "./../../core/add-medicine";
-import Input from "./../input/input";
-interface MedicationFormProps {
+import Input from "../input/input";
+interface MedicineFormProps {
   addMecines: AddMedicine;
   medicineChanged?: (AddMedicines: AddMedicine) => void;
   canceled?: () => void;
 }
 
-export default function MedicationForm(props: MedicationFormProps) {
+export default function MedicineForm(props: MedicineFormProps) {
   const id = props.addMecines.id;
   const [name, setName] = useState(props.addMecines?.name ?? "");
   const [dosage, setDosage] = useState(props.addMecines?.dosage ?? 0);

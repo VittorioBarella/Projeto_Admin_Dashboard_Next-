@@ -1,41 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/button/button";
-import MedicationForm from "../components/forms/medication-form";
-import MedicationTable from "../components/medicines/medication-table";
+import MedicineForm from "../components/forms/medicine-form";
+import MedicinesTable from "../components/medicines/medicines-table";
 import Layout from "../components/template/Layout";
 import AddMedicine from "../core/add-medicine";
+import MedicineRepository from "./../core/medicine-repository";
+import MedicineCollection from "./../firebase/db/medicine-collection";
 
 export default function Health() {
+  const repo: MedicineRepository = new MedicineCollection();
+
   const [addMedicine, setAddMedicine] = useState<AddMedicine>(
     AddMedicine.empty()
   );
+  const [addMedicines, setAddMedicines] = useState<AddMedicine[]>([]);
   const [visible, setVisible] = useState<"table" | "form">("table");
 
-  const addMedicines = [
-    new AddMedicine("1", "Euthyrox", 150, "Monday"),
-    new AddMedicine("2", "Euthyrox", 175, "Tuesday"),
-    new AddMedicine("3", "Euthyrox", 150, "Wednesday"),
-    new AddMedicine("4", "Euthyrox", 175, "Thursday"),
-    new AddMedicine("5", "Euthyrox", 150, "Friday"),
-    new AddMedicine("6", "Euthyrox", 175, "Saturday"),
-    new AddMedicine("7", "Euthyrox", 175, "Sunday"),
-  ];
+  useEffect(getAll, []);
 
-  function selectedMedicine(AddMedicines: AddMedicine) {
-    setAddMedicine(AddMedicines);
+  function getAll() {
+    repo.getAll().then((addMedicines) => {
+      setAddMedicines(addMedicines);
+      setVisible("table");
+    });
+  }
+
+  function selectedMedicine(addMedicines: AddMedicine) {
+    setAddMedicine(addMedicines);
     setVisible("form");
   }
-  function medicineExcluded(AddMedicines: AddMedicine) {
-    console.log(`Deleted... ${AddMedicines.name}`);
+
+  async function medicineExcluded(addMedicines: AddMedicine) {
+    await repo.delete(addMedicines);
+    getAll();
   }
 
   function newMedicine() {
     setAddMedicine(AddMedicine.empty());
     setVisible("form");
   }
-  function saveMedicine(AddMedicine: AddMedicine) {
-    console.log(AddMedicine);
-    setVisible("table");
+
+  async function saveMedicine(addMedicine: AddMedicine) {
+    await repo.save(addMedicine);
+    getAll();
   }
 
   return (
@@ -54,14 +61,14 @@ export default function Health() {
                   New Medicine
                 </Button>
               </div>
-              <MedicationTable
+              <MedicinesTable
                 addMedicines={addMedicines}
                 selectedMedicine={selectedMedicine}
                 medicineExcluded={medicineExcluded}
               />
             </>
           ) : (
-            <MedicationForm
+            <MedicineForm
               addMecines={addMedicine}
               medicineChanged={saveMedicine}
               canceled={() => setVisible("table")}

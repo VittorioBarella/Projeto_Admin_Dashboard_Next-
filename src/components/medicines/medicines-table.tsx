@@ -1,12 +1,12 @@
+import AddMedicine from "../../core/add-medicine";
 import { IconEdit, IconTrash } from "../../icons";
-import AddMedicine from "./../../core/add-medicine";
 
 interface TableProps {
   addMedicines: AddMedicine[];
   selectedMedicine?: (addMedicines: AddMedicine) => void;
   medicineExcluded?: (addMedicines: AddMedicine) => void;
 }
-export default function MedicationTable(props: TableProps) {
+export default function MedicinesTable(props: TableProps) {
   const showActions = props.medicineExcluded || props.selectedMedicine;
 
   function renderHeader() {
@@ -69,7 +69,7 @@ export default function MedicationTable(props: TableProps) {
             {AddMedicine.dosage}
           </td>
           <td scope="row" className="text-center">
-            {AddMedicine.dayToTake}
+            {AddMedicine.daysToTake}
           </td>
           {showActions ? renderActions(AddMedicine) : false}
         </tr>
